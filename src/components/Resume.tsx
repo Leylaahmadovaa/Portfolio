@@ -1,4 +1,3 @@
-
 const Resume: React.FC = () => {
   return (
     <div className="xl:w-[60%] md:w-[60%] w-full xl:pt-0 md:pt-0 pt-[50px] xl:pl-0 md:pl-0 pl-[50px] mt-[210px]">
@@ -7,7 +6,9 @@ const Resume: React.FC = () => {
         <p>RESUME</p>
       </div>
       <div className="mt-[30px]">
-        <h3 className="text-white xl:text-[50px] md:text-[25px] text-[35px]">Education</h3>
+        <h3 className="text-white xl:text-[50px] md:text-[25px] text-[35px]">
+          Education
+        </h3>
         <ul className="list-outside pl-[20px] flex flex-col gap-[50px] mt-[20px]">
           <li className="hover:cursor-default relative pl-[40px] group before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-[#445e5f] before:rounded-full before:transition-colors before:duration-500 hover:before:bg-white">
             <p className="text-[#445e5f] xl:mb-[20px] md:mb-[20px] mb-[10px] translate-y-[-5px] transition-all duration-500 group-hover:text-white">

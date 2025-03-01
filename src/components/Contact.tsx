@@ -29,13 +29,16 @@ const Contact: React.FC = () => {
         <h4 className="text-white xl:text-[28px] md:text-[20px] mb-[50px]">
           leylaahmadova24@gmail.com
         </h4>
-        <form action="" className="grid xl:grid-cols-2 grid-cols-1 gap-[30px] w-[80%] md:text-[14px]">
+        <form
+          action=""
+          className="grid xl:grid-cols-2 grid-cols-1 gap-[30px] w-[80%] md:text-[14px]"
+        >
           <div className="flex flex-col gap-[14px]">
             <label className="text-white font-bold" htmlFor="Name">
               FULL NAME <span className="text-red-500">*</span>
             </label>
             <input
-            required
+              required
               id="Name"
               type="text"
               className="bg-transparent border-2 rounded-2xl h-[40px] focus:border-[#5c797a] outline-none px-3 text-[#5c797a]"
@@ -46,7 +49,7 @@ const Contact: React.FC = () => {
               EMAIL <span className="text-red-500">*</span>
             </label>
             <input
-            required
+              required
               id="Mail"
               type="email"
               className="bg-transparent border-2 rounded-2xl h-[40px] focus:border-[#5c797a] outline-none px-3 text-[#5c797a]"
@@ -92,12 +95,12 @@ const Contact: React.FC = () => {
             <input id="File" type="file" hidden />
           </div>
           <button
-          onMouseEnter={()=>setHovered1(true)}
-          onMouseLeave={()=>setHovered1(false)}
-          style={{
-            backgroundColor:hovered1?"white":color,
-            color:hovered1?color:"white"
-          }}
+            onMouseEnter={() => setHovered1(true)}
+            onMouseLeave={() => setHovered1(false)}
+            style={{
+              backgroundColor: hovered1 ? "white" : color,
+              color: hovered1 ? color : "white",
+            }}
             type="submit"
             title="send"
             className="my-[20px] border-white  border-[1px] hover:border-[#5c797a] transition-all duration-500 w-[250px] rounded-full h-[50px]"

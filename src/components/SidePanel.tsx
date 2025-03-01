@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useContext } from 'react';
-import { Color } from '../store/context';
+import { useContext } from "react";
+import { Color } from "../store/context";
 
 const SidePanel: React.FC = () => {
   const context = useContext(Color);
@@ -9,7 +9,9 @@ const SidePanel: React.FC = () => {
   }
   const { color, setColor } = context;
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [sections, setSections] = useState<number[]>([0, 900, 1500, 2300, 2900, 3600, 5400]);
+  const [sections, setSections] = useState<number[]>([
+    0, 900, 1500, 2300, 2900, 3600, 5400,
+  ]);
 
   useEffect(() => {
     const updateSections = () => {
@@ -21,20 +23,23 @@ const SidePanel: React.FC = () => {
       }
     };
 
-    updateSections(); 
+    updateSections();
     window.addEventListener("resize", updateSections);
 
     return () => {
       window.removeEventListener("resize", updateSections);
     };
-  }, []); 
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       let newIndex = null;
       sections.forEach((pos, index) => {
-        if (scrollPosition >= pos && scrollPosition < (sections[index + 1] || Infinity)) {
+        if (
+          scrollPosition >= pos &&
+          scrollPosition < (sections[index + 1] || Infinity)
+        ) {
           newIndex = index;
         }
       });
@@ -42,11 +47,11 @@ const SidePanel: React.FC = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [sections]); 
+  }, [sections]);
 
   const handleClick = (index: number) => {
     window.scrollTo({ top: sections[index], behavior: "smooth" });
@@ -63,7 +68,11 @@ const SidePanel: React.FC = () => {
         "fa-grip-vertical",
         "fa-envelope",
       ].map((icon, index) => (
-        <div key={index} onClick={() => handleClick(index)} className="cursor-pointer">
+        <div
+          key={index}
+          onClick={() => handleClick(index)}
+          className="cursor-pointer"
+        >
           <i
             style={{
               color: activeIndex === index ? "white" : color,

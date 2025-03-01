@@ -15,11 +15,9 @@ const SideBar: React.FC = () => {
     const updateSections = () => {
       if (window.innerWidth <= 768) {
         setSections([0, 1150, 1900, 3000, 3700, 5200, 6800]);
-      }
-      else if(window.innerWidth > 768 && window.innerWidth <= 1280){
+      } else if (window.innerWidth > 768 && window.innerWidth <= 1280) {
         setSections([0, 600, 1200, 2000, 2600, 3400, 4800]);
-      }
-      else {
+      } else {
         setSections([0, 900, 1500, 2300, 2900, 3600, 5400]);
       }
     };
@@ -30,7 +28,11 @@ const SideBar: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (sidebar && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+      if (
+        sidebar &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
         dispatch(isOpened());
       }
     };
@@ -67,8 +69,8 @@ const SideBar: React.FC = () => {
   };
 
   return (
-    <div 
-      ref={sidebarRef} 
+    <div
+      ref={sidebarRef}
       className={`${
         sidebar
           ? "opacity-100 visible xl:w-[350px] md:w-[220px] w-[220px]"
@@ -107,10 +109,22 @@ const SideBar: React.FC = () => {
       <div className="text-[#90b2b4] mt-[30px]">
         <h4 className="text-[20px]">Social</h4>
         <div className="text-[19px] flex gap-[20px] mt-[20px]">
-          <a title='linkedin' href="https://www.linkedin.com/in/leyla-ahmadova-bb0368260" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-all duration-500">
+          <a
+            title="linkedin"
+            href="https://www.linkedin.com/in/leyla-ahmadova-bb0368260"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-all duration-500"
+          >
             <i className="fa-brands fa-linkedin"></i>
           </a>
-          <a title='github' href="https://github.com/Leylaahmadovaa" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-all duration-500">
+          <a
+            title="github"
+            href="https://github.com/Leylaahmadovaa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-all duration-500"
+          >
             <i className="fa-brands fa-github"></i>
           </a>
         </div>
