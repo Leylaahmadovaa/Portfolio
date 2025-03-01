@@ -21,13 +21,13 @@ const SidePanel: React.FC = () => {
       }
     };
 
-    updateSections(); // Update sections on component mount
-    window.addEventListener("resize", updateSections); // Update on window resize
+    updateSections(); 
+    window.addEventListener("resize", updateSections);
 
     return () => {
       window.removeEventListener("resize", updateSections);
     };
-  }, []); // Empty dependency array ensures this effect runs once on mount
+  }, []); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,11 +42,11 @@ const SidePanel: React.FC = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Call it initially to check current scroll position
+    handleScroll(); 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [sections]); // Re-run effect when 'sections' array changes
+  }, [sections]); 
 
   const handleClick = (index: number) => {
     window.scrollTo({ top: sections[index], behavior: "smooth" });
