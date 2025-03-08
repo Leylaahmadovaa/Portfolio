@@ -3,6 +3,7 @@ import project2 from "../assets/project2.png";
 import adminpanel from "../assets/adminpanel.png";
 import { useContext } from "react";
 import { Color } from "../store/context";
+import { useSelector } from "react-redux";
 
 const Portfolio: React.FC = () => {
   const context = useContext(Color);
@@ -10,6 +11,9 @@ const Portfolio: React.FC = () => {
     throw new Error("Settings must be used within a ColorProvider");
   }
   const { color, setColor } = context;
+  const language = useSelector(
+    (state: { language: { value: string } }) => state.language.value
+  );
   return (
     <div className="xl:w-[60%] md:w-[60%] w-full xl:pt-0 md:pt-0 pt-[50px] xl:pl-0 md:pl-0 pl-[50px] mt-[200px]">
       <div className="flex text-white border-white border-[1px] w-[150px] h-[35px] rounded-full gap-[5px] items-center justify-center">
@@ -18,13 +22,15 @@ const Portfolio: React.FC = () => {
       </div>
       <div>
         <h3 className="xl:text-[50px] md:text-[25px] text-white mt-[50px] mb-[30px] text-[35px]">
-          Featured{" "}
+        {language=="AZ"?"Seçilmiş":"Featured"}
+          {" "}
           <span
             style={{
               color: color,
             }}
           >
-            Projects
+            {language=="AZ"?"Layihələr":"Projects"}
+            
           </span>
         </h3>
         <div className="flex flex-col gap-[50px]">
@@ -52,7 +58,9 @@ const Portfolio: React.FC = () => {
               title="mybrands"
               href="https://mybrands-copy-finalproject.netlify.app/"
             >
-              MyBrands.az (Copy)
+              MyBrands.az 
+              {language=="AZ"?"(Nüsxə)":"(Copy)"}
+              
             </a>
           </div>
           <div>
@@ -82,7 +90,7 @@ const Portfolio: React.FC = () => {
               title="coin catalog"
               href="https://github.com/Leylaahmadovaa/FinalProjectAlgorithmics"
             >
-              Coin Catalog (Including Backend)
+              {language=="AZ"?"Qəpik Kataloqu (Backend Daxil Olmaqla)":"Coin Catalog (Including Backend)"}
             </a>
           </div>
           <div>

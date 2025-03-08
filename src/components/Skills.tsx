@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Color } from "../store/context";
+import { useSelector } from "react-redux";
 
 const Skills: React.FC = () => {
   const context = useContext(Color);
@@ -7,21 +8,31 @@ const Skills: React.FC = () => {
     throw new Error("Settings must be used within a ColorProvider");
   }
   const { color, setColor } = context;
+  const language = useSelector(
+    (state: { language: { value: string } }) => state.language.value
+  );
   return (
     <div className="xl:w-[60%] md:w-[60%] w-full xl:pt-0 md:pt-0 pt-[50px] xl:pl-0 md:pl-0 pl-[50px] mt-[200px]">
-      <div className="flex text-white border-white border-[1px] w-[150px] h-[35px] rounded-full gap-[5px] items-center justify-center">
+      <div
+      style={{
+        width:language=="AZ"?"200px":"150px"
+      }}
+      className="flex text-white border-white border-[1px] h-[35px] rounded-full gap-[5px] items-center justify-center">
         <i className="fa-solid fa-shapes"></i>
-        <p>MY SKILLS</p>
+        <p>
+        {language=="AZ"?"Mənim Bacarıqlarım":"MY SKILLS"}
+        </p>
       </div>
       <div className="mt-[50px]">
         <h3 className="text-white xl:text-[50px] md:text-[25px] text-[35px]">
-          My{" "}
+        {language=="AZ"?"Mənim":"MY"}{" "}
           <span
             style={{
               color: color,
             }}
           >
-            Advantages
+           {language=="AZ"?"Üstünlüklərim":"Advantages"}
+            
           </span>
         </h3>
         <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 translate-x-[-30px] mt-[30px]">

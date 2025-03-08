@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Color } from "../store/context";
+import { useSelector } from "react-redux";
 
 const Contact: React.FC = () => {
   const context = useContext(Color);
@@ -8,22 +9,35 @@ const Contact: React.FC = () => {
   }
   const { color, setColor } = context;
   const [hovered1, setHovered1] = useState(false);
-
+  const language = useSelector(
+    (state: { language: { value: string } }) => state.language.value
+  );
   return (
     <div className="xl:w-[60%] md:w-[60%] w-full xl:pt-0 md:pt-0 pt-[50px] xl:pl-0 md:pl-0 pl-[50px] mt-[100px]">
       <div className="flex text-white border-white border-[1px] w-[150px] h-[35px] rounded-full gap-[5px] items-center justify-center">
         <i className="fa-solid fa-envelope"></i>
-        <p>CONTACT</p>
+        <p>
+        {language=="AZ"?"ƏLAQƏ":"CONTACT"}
+        </p>
       </div>
       <div className="mt-[40px]">
         <h3 className="xl:text-[50px] md:text-[25px] text-white mb-[35px] text-[35px]">
-          Let's Work
+          {language=="AZ"?"Gəl ":""}
+        <span
+            style={{
+              color: color,
+            }}
+          >
+            {language=="AZ"?"Birlikdə":""}
+          </span>
+        {language=="AZ"?" İşləyək!":"Let's Work"}
+          
           <span
             style={{
               color: color,
             }}
           >
-            Together!
+            {language=="EN"?"Together!":""}
           </span>
         </h3>
         <h4 className="text-white xl:text-[28px] md:text-[20px] mb-[50px]">
@@ -35,7 +49,8 @@ const Contact: React.FC = () => {
         >
           <div className="flex flex-col gap-[14px]">
             <label className="text-white font-bold" htmlFor="Name">
-              FULL NAME <span className="text-red-500">*</span>
+            {language=="AZ"?"AD SOYAD":"FULL NAME"}
+               <span className="text-red-500">*</span>
             </label>
             <input
               required
@@ -57,7 +72,10 @@ const Contact: React.FC = () => {
           </div>
           <div className="flex flex-col gap-[14px]">
             <label className="text-white font-bold" htmlFor="Phone">
-              PHONE <span className="text-[#5c797a]">(optional)</span>
+            {language=="AZ"?"TELEFON":"PHONE"}
+               <span className="text-[#5c797a]">
+            {language=="AZ"?" (İstəyə bağlı)":"(optional)"}
+                </span>
             </label>
             <input
               id="Phone"
@@ -67,7 +85,9 @@ const Contact: React.FC = () => {
           </div>
           <div className="flex flex-col gap-[14px]">
             <label className="text-white font-bold" htmlFor="Budget">
-              YOUR BUDGET<span className="text-[#5c797a]">(optional)</span>
+            {language=="AZ"?"BÜDCƏNİZ":"YOUR BUDGET"}
+              <span className="text-[#5c797a]">
+              {language=="AZ"?" (İstəyə bağlı)":"(optional)"}</span>
             </label>
             <input
               id="Budget"
@@ -77,7 +97,8 @@ const Contact: React.FC = () => {
           </div>
           <div className="flex flex-col gap-[14px]">
             <label className="text-white font-bold" htmlFor="Message">
-              MESSAGE<span className="text-[#5c797a]">(optional)</span>
+              {language=="AZ"?"MESAJ":"MESSAGE"}
+              <span className="text-[#5c797a]">{language=="AZ"?" (İstəyə bağlı)":"(optional)"}</span>
             </label>
             <textarea
               id="Message"
@@ -90,7 +111,9 @@ const Contact: React.FC = () => {
               className="flex items-center gap-[10px] text-white font-bold hover:cursor-pointer hover:text-[#5c797a] transition-all duration-500"
             >
               <i className="fa-solid fa-cloud-arrow-up"></i>
-              <p>ADD AN ATTACHMENT</p>
+              <p>
+              {language=="AZ"?"FAYL ƏLAVƏ ET":"ADD AN ATTACHMENT"}
+              </p>
             </label>
             <input id="File" type="file" hidden />
           </div>
@@ -105,7 +128,7 @@ const Contact: React.FC = () => {
             title="send"
             className="my-[20px] border-white  border-[1px] hover:border-[#5c797a] transition-all duration-500 w-[250px] rounded-full h-[50px]"
           >
-            SEND MESSAGE
+            {language=="AZ"?"MESAJ GÖNDƏR":"SEND MESSAGE"}   
           </button>
         </form>
       </div>

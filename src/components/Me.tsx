@@ -1,5 +1,5 @@
 import photo from "../assets/photo.jpeg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { check } from "../store/configSlice";
 import { useContext, useState } from "react";
 import { Color } from "../store/context";
@@ -16,6 +16,9 @@ const Me: React.FC = () => {
   const [hovered3, setHovered3] = useState(false);
   const [hovered4, setHovered4] = useState(false);
 
+  const language = useSelector(
+    (state: { language: { value: string } }) => state.language.value
+  );
   return (
     <div className="fixed">
       <div
@@ -46,7 +49,7 @@ const Me: React.FC = () => {
           }}
           className="xl:text-[22px] md:text-[11px] font-semibold"
         >
-          Baku, Azerabijan
+          {language=="AZ"?"Bakı, Azərbaycan":"Baku, Azerabijan"}
         </p>
         {/* icons */}
         <div
@@ -120,7 +123,9 @@ const Me: React.FC = () => {
           className={`flex items-center xl:gap-[10px] md:gap-[5px] xl:text-[20px] md:text-[10px] mt-[10px] rounded-full border-[3px] px-[7px] py-[5px] xl:w-[200px] md:w-[100px] justify-center transition-all duration-500`}
         >
           <i className="fa-solid fa-envelope"></i>
-          <p>HIRE ME!</p>
+          <p>
+          {language=="AZ"?"Məni işə götür":"HIRE ME!"}
+          </p>
         </button>
       </div>
     </div>

@@ -1,10 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { isOpened } from "../store/sidebarSlice";
+import { change } from "../store/languageSlice";
 
 const SideBar: React.FC = () => {
   const sidebar = useSelector(
     (state: { sidebar: { value: boolean } }) => state.sidebar.value
+  );
+  const language = useSelector(
+    (state: { language: { value: string } }) => state.language.value
   );
   const dispatch = useDispatch();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -128,6 +132,21 @@ const SideBar: React.FC = () => {
             <i className="fa-brands fa-github"></i>
           </a>
         </div>
+      </div>
+      <div>
+        <div
+        onClick={()=>dispatch(change("AZ"))}
+        style={{
+          color:language=="AZ"?"white":"#90b2b4"
+        }}
+        className="cursor-pointer"
+        >AZ</div>
+        <div
+        onClick={()=>dispatch(change("EN"))}
+        style={{
+          color:language=="EN"?"white":"#90b2b4"
+        }}
+        className="cursor-pointer">EN</div>
       </div>
     </div>
   );
